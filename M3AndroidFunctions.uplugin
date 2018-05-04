@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "0.5",
+	"FriendlyName": "M3 Android Functions",
+	"Description": "",
+	"Category": "Other",
+	"CreatedBy": "Mosel3y",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EnabledByDefault": false,
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "M3AndroidFunctions",
+            "Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
