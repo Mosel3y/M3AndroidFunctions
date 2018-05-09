@@ -72,3 +72,12 @@ bool UM3AndroidFunctionsBPLibrary::openExternalApp(FString packageName, TMap<FSt
 #endif
 	return result;
 }
+
+bool UM3AndroidFunctionsBPLibrary::deviceHasCamera()
+{
+	bool result = false;
+#if PLATFORM_ANDROID
+	result = AndroidThunkCpp_deviceHasCamera();
+#endif
+	return result;
+}

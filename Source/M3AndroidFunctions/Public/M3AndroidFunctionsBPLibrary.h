@@ -48,4 +48,10 @@ class UM3AndroidFunctionsBPLibrary : public UBlueprintFunctionLibrary
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Open External App", Keywords = "open external app android"), Category = "M3AndroidFunctions")
 	static bool openExternalApp(FString packageName, TMap<FString, FString> intentStringExtras);
+
+	/**
+	* Check does device have a camera
+	*/
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Device Has Camera", Keywords = "camera mobile android"), Category = "M3AndroidFunctions")
+	static bool deviceHasCamera();
 };

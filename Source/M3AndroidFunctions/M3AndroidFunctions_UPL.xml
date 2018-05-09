@@ -148,6 +148,13 @@
                 return false;
                 }
       }
+
+      public boolean AndroidThunkJava_deviceHasCamera()
+      {
+        PackageManager pm = this.getPackageManager();
+        return (pm.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY));
+      }
+      
     </insert>
   </gameActivityClassAdditions>
 
