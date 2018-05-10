@@ -18,4 +18,8 @@ public:
 	/** Whether to show the status bar or not, defaults to false */
 	UPROPERTY(Config, EditAnywhere, Category = "Theme", meta = (DisplayName = "Show Status Bar"))
 	bool bShowTitleBar;
+
+	/** Add Camera permission to manifest */
+	UPROPERTY(Config, EditAnywhere, Category = "Permissions", meta = (DisplayName = "Add camera permission"))
+	bool bAddCameraPermission;
 };

@@ -8,6 +8,7 @@
   <init>
     <log text="M3AndroidFunctions init"/>
     <setBoolFromProperty result="bShowTitleBar" ini="Engine" section="/Script/M3AndroidFunctions.M3AndroidFunctionsSettings" property="bShowTitleBar" default="false"/>
+    <setBoolFromProperty result="bAddCameraPermission" ini="Engine" section="/Script/AndroidFunctions.AndroidFunctionsSettings" property="bAddCameraPermission" default="false"/>
   </init>
 
   <androidManifestUpdates>
@@ -15,6 +16,12 @@
     <if condition="bShowTitleBar">
       <true>
         <addAttribute tag="activity" name="android:theme" value="@android:style/Theme.Black.NoTitleBar"/>  
+      </true>
+    </if>
+    <!-- Permissions -->
+    <if condition="bAddCameraPermission">
+      <true>
+        <addPermission android:name="android.permission.CAMERA"/> 
       </true>
     </if>
   </androidManifestUpdates>

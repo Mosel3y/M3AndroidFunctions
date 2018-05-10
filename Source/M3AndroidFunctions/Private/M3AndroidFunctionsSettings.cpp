@@ -6,5 +6,6 @@
 UM3AndroidFunctionsSettings::UM3AndroidFunctionsSettings(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 	, bShowTitleBar(false)
+	, bAddCameraPermission(false)
 {
 }
