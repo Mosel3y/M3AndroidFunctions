@@ -3,6 +3,8 @@
 
 #include "M3AndroidFunctionsBPLibrary.h"
 #include "Misc/App.h"
+#include "IM3AndroidFunctions.h"
+#include "M3AndroidFunctionsCameraCallbackProxy.h"
 
 UM3AndroidFunctionsBPLibrary::UM3AndroidFunctionsBPLibrary(const FObjectInitializer& ObjectInitializer)
 : Super(ObjectInitializer)
@@ -80,4 +82,13 @@ bool UM3AndroidFunctionsBPLibrary::deviceHasCamera()
 	result = AndroidThunkCpp_deviceHasCamera();
 #endif
 	return result;
+}
+
+UM3AndroidFunctionsCameraCallbackProxy* UM3AndroidFunctionsBPLibrary::openNativeCamera()
+{
+#if PLATFORM_ANDROID
+	AndroidThunkCpp_openNativeCamera();
+	return UM3AndroidFunctionsCameraCallbackProxy::GetInstance();
+#endif
+	return UM3AndroidFunctionsCameraCallbackProxy::GetInstance();
 }

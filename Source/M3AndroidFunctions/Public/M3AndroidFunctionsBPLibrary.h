@@ -3,14 +3,14 @@
 
 #pragma once
 
-#include "Engine.h"
+#include "CoreMinimal.h"
 #include "M3AndroidFunctionsBPLibrary.generated.h"
 
 UCLASS()
-class UM3AndroidFunctionsBPLibrary : public UBlueprintFunctionLibrary
+class M3ANDROIDFUNCTIONS_API UM3AndroidFunctionsBPLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_UCLASS_BODY()
-
+public:
 	/**
 	* Set  the visibility of the status bar NOTE: Must also have "Show Status Bar" true in plugin config settings
 	*/
@@ -54,4 +54,10 @@ class UM3AndroidFunctionsBPLibrary : public UBlueprintFunctionLibrary
 	*/
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Device Has Camera", Keywords = "camera mobile android"), Category = "M3AndroidFunctions")
 	static bool deviceHasCamera();
+
+	/**
+	* Open native camera app
+	*/
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Open Native Camera", Keywords = "Open native camera android"), Category = "AndroidFunctions")
+	static UM3AndroidFunctionsCameraCallbackProxy* openNativeCamera();
 };

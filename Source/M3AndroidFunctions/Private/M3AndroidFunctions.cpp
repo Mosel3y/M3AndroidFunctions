@@ -25,6 +25,7 @@ static jmethodID AndroidThunkJava_setLandscape;
 static jmethodID AndroidThunkJava_isPackageInstalled;
 static jmethodID AndroidThunkJava_openExternalApp;
 static jmethodID AndroidThunkJava_deviceHasCamera;
+static jmethodID AndroidThunkJava_openNativeCamera;
 #endif
 
 #define LOCTEXT_NAMESPACE "FM3AndroidFunctionsModule"
@@ -77,6 +78,7 @@ int SetupJNIM3AndroidFunctions(JNIEnv* env)
 	AndroidThunkJava_isPackageInstalled = FJavaWrapper::FindMethod(ENV, FJavaWrapper::GameActivityClassID, "AndroidThunkJava_isPackageInstalled", "(Ljava/lang/String;)Z", false);
 	AndroidThunkJava_openExternalApp = FJavaWrapper::FindMethod(ENV, FJavaWrapper::GameActivityClassID, "AndroidThunkJava_openExternalApp", "(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;)Z", false);
 	AndroidThunkJava_deviceHasCamera = FJavaWrapper::FindMethod(ENV, FJavaWrapper::GameActivityClassID, "AndroidThunkJava_deviceHasCamera", "()Z", false);
+	AndroidThunkJava_openNativeCamera = FJavaWrapper::FindMethod(ENV, FJavaWrapper::GameActivityClassID, "AndroidThunkJava_openNativeCamera", "()V", false);
 
 	return JNI_OK;
 }
@@ -156,5 +158,11 @@ bool AndroidThunkCpp_deviceHasCamera()
 {
 	if (!AndroidThunkJava_deviceHasCamera || !ENV) return false;
 	return FJavaWrapper::CallBooleanMethod(ENV, FJavaWrapper::GameActivityThis, AndroidThunkJava_deviceHasCamera);
+}
+
+void AndroidThunkCpp_openNativeCamera()
+{
+	if (!AndroidThunkJava_deviceHasCamera || !ENV) return;
+	FJavaWrapper::CallVoidMethod(ENV, FJavaWrapper::GameActivityThis, AndroidThunkJava_openNativeCamera);
 }
 #endif
