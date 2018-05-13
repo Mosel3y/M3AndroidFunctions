@@ -12,6 +12,7 @@
 * Set screen orientation to portrait
 * Check is app installed
 * Open an external app by package name
+* Open native camera, return path to taken photo
 * More to be added.
 
 ## Install
