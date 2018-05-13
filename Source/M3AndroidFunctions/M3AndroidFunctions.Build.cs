@@ -1,7 +1,7 @@
 // M3 Android Functions
 // (c) 2018 Mark Whitty
 
-//using UnrealBuildTool;
+using UnrealBuildTool;
 using System.IO;
 
 namespace UnrealBuildTool.Rules
@@ -13,6 +13,8 @@ namespace UnrealBuildTool.Rules
 			PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
 			Definitions.Add("WITH_M3AndroidFunctions=1");
+
+			PublicIncludePaths.Add("AndroidFunctions/Public");
 
 			PrivateIncludePaths.Add("M3AndroidFunctions/Private");
 
