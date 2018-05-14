@@ -164,7 +164,7 @@ bool AndroidThunkCpp_deviceHasCamera()
 
 void AndroidThunkCpp_openNativeCamera()
 {
-	if (!AndroidThunkJava_deviceHasCamera || !ENV) return;
+	if (!AndroidThunkJava_openNativeCamera || !ENV) return;
 	FJavaWrapper::CallVoidMethod(ENV, FJavaWrapper::GameActivityThis, AndroidThunkJava_openNativeCamera);
 }
 
