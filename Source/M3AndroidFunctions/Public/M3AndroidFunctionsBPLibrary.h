@@ -61,6 +61,9 @@ public:
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Open Native Camera", Keywords = "Open native camera android"), Category = "AndroidFunctions")
 	static UM3AndroidFunctionsCameraCallbackProxy* openNativeCamera();
 
+	/**
+	* Opens gallery app for user to select image
+	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Open Gallery for Content", Keywords = "Open gallery get image"), Category = "AndroidFunctions")
 	static UM3AndroidFunctionsCameraCallbackProxy* openGallery();
 };
