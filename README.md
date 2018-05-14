@@ -13,6 +13,7 @@
 * Check is app installed
 * Open an external app by package name
 * Open native camera, return path to taken photo
+* Open gallery app, return path to chosen image
 * More to be added.
 
 ## Install
