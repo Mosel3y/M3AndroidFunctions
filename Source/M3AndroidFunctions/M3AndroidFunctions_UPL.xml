@@ -9,6 +9,7 @@
     <log text="M3AndroidFunctions init"/>
     <setBoolFromProperty result="bShowTitleBar" ini="Engine" section="/Script/M3AndroidFunctions.M3AndroidFunctionsSettings" property="bShowTitleBar" default="false"/>
     <setBoolFromProperty result="bAddCameraPermission" ini="Engine" section="/Script/AndroidFunctions.AndroidFunctionsSettings" property="bAddCameraPermission" default="false"/>
+
   </init>
 
   <resourceCopies>
@@ -62,9 +63,14 @@
       import android.app.Activity;
       import android.content.Intent;
       import android.content.ActivityNotFoundException;
+      import android.provider.MediaStore;
       import java.io.IOException;
       import java.util.Locale;
       import android.support.v4.content.FileProvider;
+      import android.graphics.Bitmap;
+      import java.io.OutputStream;
+      import java.io.BufferedOutputStream;
+      import java.io.FileOutputStream;
     </insert>
   </gameActivityImportAdditions>
 
@@ -88,6 +94,9 @@
 
   <gameActivityClassAdditions>
     <insert>
+      public static final int REQUEST_IMAGE_CAPTURE = 7;
+      public static final int REQUEST_IMAGE_SELECT = 8;
+      String imageFilePath;
 
       public void AndroidThunkJava_setStatusBarVisibility(boolean inVisibility)
       {
@@ -162,8 +171,7 @@
       {
             boolean isInstalled = isPackageInstalled(packageName, this.getPackageManager());
             
-            if (isInstalled) 
-            {
+            if (isInstalled) {
             PackageManager pm = this.getPackageManager();
                 try {
                   Intent newAppIntent = pm.getLaunchIntentForPackage(packageName);
@@ -220,6 +228,14 @@
         }
       }
 
+      public void AndroidThunkJava_openGallery()
+      {
+        Intent choosePictureIntent = new Intent();
+        choosePictureIntent.setType("image/*");
+        choosePictureIntent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(choosePictureIntent, "Select Image"), REQUEST_IMAGE_SELECT); 
+      }
+
       public static native void onImageCaptured(String imagePath);
       
     </insert>
@@ -231,6 +247,23 @@
         Log.debug("=== Returned from camera ===");
         onImageCaptured(imageFilePath);
         }
+
+       if (requestCode == REQUEST_IMAGE_SELECT & amp; &amp; resultCode == RESULT_OK) {
+       Uri uri = data.getData();
+       File file = null;
+       try {
+        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+        file = createImageFile();
+        if (file != null) {
+         OutputStream os = new BufferedOutputStream(new FileOutputStream(file));
+         bitmap.compress(Bitmap.CompressFormat.JPEG, 80, os);
+         os.close();
+         onImageCaptured(imageFilePath);
+        }
+       } catch (IOException e) {
+        Log.debug("=== IOException creating image ===");
+       }
+      }
     </insert>
   </gameActivityOnActivityResultAdditions>
 

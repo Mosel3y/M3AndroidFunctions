@@ -92,3 +92,12 @@ UM3AndroidFunctionsCameraCallbackProxy* UM3AndroidFunctionsBPLibrary::openNative
 #endif
 	return UM3AndroidFunctionsCameraCallbackProxy::GetInstance();
 }
+
+UM3AndroidFunctionsCameraCallbackProxy* UM3AndroidFunctionsBPLibrary::openGallery()
+{
+#if PLATFORM_ANDROID
+	AndroidThunkCpp_openGallery();
+	return UM3AndroidFunctionsCameraCallbackProxy::GetInstance();
+#endif
+	return UM3AndroidFunctionsCameraCallbackProxy::GetInstance();
+}
