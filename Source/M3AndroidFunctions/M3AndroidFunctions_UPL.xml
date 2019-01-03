@@ -243,26 +243,30 @@
 
   <gameActivityOnActivityResultAdditions>
     <insert>
-      if ( requestCode == REQUEST_IMAGE_CAPTURE &amp; &amp; resultCode == RESULT_OK ) {
-        Log.debug("=== Returned from camera ===");
-        onImageCaptured(imageFilePath);
+      if (requestCode == REQUEST_IMAGE_CAPTURE) {
+		if (resultCode == Activity.RESULT_OK ) {
+			Log.debug("=== Returned from camera ===");
+			onImageCaptured(imageFilePath);
         }
+	}
 
-       if (requestCode == REQUEST_IMAGE_SELECT & amp; &amp; resultCode == RESULT_OK) {
-       Uri uri = data.getData();
-       File file = null;
-       try {
-        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-        file = createImageFile();
-        if (file != null) {
-         OutputStream os = new BufferedOutputStream(new FileOutputStream(file));
-         bitmap.compress(Bitmap.CompressFormat.JPEG, 80, os);
-         os.close();
-         onImageCaptured(imageFilePath);
-        }
-       } catch (IOException e) {
-        Log.debug("=== IOException creating image ===");
-       }
+       if (requestCode == REQUEST_IMAGE_SELECT) {
+		if (resultCode == Activity.RESULT_OK ) {
+		   Uri uri = data.getData();
+		   File file = null;
+		   try {
+			Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+			file = createImageFile();
+			if (file != null) {
+			 OutputStream os = new BufferedOutputStream(new FileOutputStream(file));
+			 bitmap.compress(Bitmap.CompressFormat.JPEG, 80, os);
+			 os.close();
+			 onImageCaptured(imageFilePath);
+			}
+		   } catch (IOException e) {
+			Log.debug("=== IOException creating image ===");
+		   }
+	   }
       }
     </insert>
   </gameActivityOnActivityResultAdditions>
