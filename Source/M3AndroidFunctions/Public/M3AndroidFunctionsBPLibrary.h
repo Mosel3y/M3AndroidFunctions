@@ -58,12 +58,12 @@ public:
 	/**
 	* Open native camera app
 	*/
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Open Native Camera", Keywords = "Open native camera android"), Category = "AndroidFunctions")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Open Native Camera", Keywords = "Open native camera android"), Category = "M3AndroidFunctions")
 	static UM3AndroidFunctionsCameraCallbackProxy* openNativeCamera();
 
 	/**
 	* Opens gallery app for user to select image
 	*/
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Open Gallery for Content", Keywords = "Open gallery get image"), Category = "AndroidFunctions")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Open Gallery for Content", Keywords = "Open gallery get image"), Category = "M3AndroidFunctions")
 	static UM3AndroidFunctionsCameraCallbackProxy* openGallery();
 };

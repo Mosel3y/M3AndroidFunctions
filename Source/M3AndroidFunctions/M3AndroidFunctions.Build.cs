@@ -14,7 +14,7 @@ namespace UnrealBuildTool.Rules
 
 			Definitions.Add("WITH_M3AndroidFunctions=1");
 
-			PublicIncludePaths.Add("AndroidFunctions/Public");
+			PublicIncludePaths.Add("M3AndroidFunctions/Public");
 
 			PrivateIncludePaths.Add("M3AndroidFunctions/Private");
 
